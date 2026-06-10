@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>May Primary School</title>
+    <style>
+        /* General Styling */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Decorative Header Graphics */
+        .header-graphics {
+            background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+            padding: 40px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-graphics::before {
+            content: "📚";
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            top: -20px;
+            left: -20px;
+        }
+
+        .header-graphics::after {
+            content: "🎓";
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.1;
+            bottom: -30px;
+            right: -20px;
+        }
+
+        .school-logo {
+            width: 100px;
+            height: 100px;
+            background: #e3bf10;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 4px solid white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.3rem;
+            color: #e3bf10;
+            font-weight: bold;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            text-align: center;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 18px 30px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav a:last-child {
+            border-right: none;
+        }
+
+        nav a:hover {
+            background-color: #e3bf10;
+            color: #1e3c72;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 950px;
+            margin: -30px auto 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            min-height: 400px;
+        }
+
+        h2.section-title {
+            border-bottom: 3px solid #e3bf10;
+            padding-bottom: 12px;
+            color: #1e3c72;
+            margin-top: 0;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h2.section-title::before {
+            content: "▶";
+            margin-right: 10px;
+            color: #e3bf10;
+        }
+
+        /* Alert Box for Admission */
+        .alert-box {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(238, 90, 90, 0.4);
+            position: relative;
+        }
+
+        .alert-box::before {
+            content: "🚨";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+        }
+
+        .alert-box h2 {
+            margin: 0 0 15px;
+            font-size: 1.9rem;
+            padding-left: 40px;
+        }
+
+        .alert-box p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            padding-left: 40px;
+        }
+
+        .alert-box .important-rule {
+            background-color: white;
+            color: #c62828;
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 15px 0 10px 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Stats Cards */
+        .info-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 2px solid #e3f2fd;
+            padding: 25px 35px;
+            border-radius: 12px;
+            text-align: center;
+            width: 180px;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #e3bf10;
+        }
+
+        .stat-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 2.2rem;
+            color: #1e3c72;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #e8f4fd 0%, #d1e8fa 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+            border-left: 5px solid #1e3c72;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: #1e3c72;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: white;
+        }
+
+        .contact-details h4 {
+            margin: 0;
+            color: #1e3c72;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .contact-details p {
+            margin: 5px 0 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .features-list li {
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #e3bf10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #2ecc71;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            text-align: center;
+        }
+
+        table th {
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        table tr.total-row {
+            background-color: #e3bf10;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Teacher Cards */
+        .teacher-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 18px 0;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateX(5px);
+            border-left: 5px solid #e3bf10;
+        }
+
+        .teacher-icon {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-right: 22px;
+            flex-shrink: 0;
+        }
+
+        .teacher-info h3 {
+            margin: 0 0 5px;
+            color: #1e3c72;
+        }
+
+        .teacher-info .role {
+            margin: 0 0 5px;
+            color: #666;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .teacher-info p {
+            margin: 0;
+            color: #888;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-icons {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 10px;
+        }
+
+        .footer-links a {
+            color: #e3bf10;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            nav a {
+                padding: 15px 20px;
+                font-size: 0.9rem;
+            }
+            .alert-box::before {
+                display: none;
+            }
+            .alert-box h2, .alert-box p, .alert-box .important-rule {
+                padding-left: 0;
+            }
+            .alert-box .important-rule {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Graphics -->
+    <div class="header-graphics">
+        <header>
+            <div class="school-logo">🏫</div>
+            <h1>May Primary School</h1>
+            <p>Building Bright Futures • Grade 1 to 8</p>
+        </header>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#" onclick="showPage('home')">🏠 Home</a>
+        <a href="#" onclick="showPage('classes')">📊 Class Details</a>
+        <a href="#" onclick="showPage('teachers')">👩‍🏫 Teachers & Staff</a>
+    </nav>
+
+    <!-- PAGE 1: HOME -->
+    <div id="home" class="container">
+        <h2 class="section-title">Welcome to May Primary School</h2>
+        
+        <!-- Important Admission Alert -->
+        <div class="alert-box">
+            <h2>📢 ADMISSIONS OPEN - LAST DATE: 30TH JULY</h2>
+            <p>New admissions for all classes (Grade 1-8) are now open. Don't miss the deadline!</p>
+            <div class="important-rule">
+                ⚠️ IMPORTANT: Visit School Principal In Person for Admission
+            </div>
+            <p style="font-weight: bold;">NO online or proxy admissions allowed.</p>
+        </div>
+
+        <!-- School Stats -->
+        <div class="info-grid">
+            <div class="stat-card">
+                <div class="icon">👨‍🎓</div>
+                <strong>140</strong>
+                Total Students
+            </div>
+            <div class="stat-card">
+                <div class="icon">🏫</div>
+                <strong>8</strong>
+                Grades (1-8)
+            </div>
+            <div class="stat-card">
+                <div class="icon">📅</div>
+                <strong>Aug</strong>
+                New Session
+            </div>
+            <div class="stat-card">
+                <div class="icon">⭐</div>
+                <strong>Best</strong>
+                Education
+            </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <h2 class="section-title">Why Choose May Primary School?</h2>
+        <ul class="features-list">
+            <li>Experienced and dedicated faculty</li>
+            <li>Safe and secure campus environment</li>
+            <li>Individual attention for every student</li>
+            <li>Focus on overall development</li>
+            <li>Modern teaching methodologies</li>
+            <li>Holistic approach to education</li>
+        </ul>
+
+        <!-- Contact Information Section -->
+        <div class="contact-section">
+            <h2 style="margin-top: 0; color: #1e3c72;">📞 Contact Information</h2>
+            <p>Feel free to reach out to us for any inquiries regarding admissions or school activities.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">🏫</div>
+                    <div class="contact-details">
+                        <h4>School Name</h4>
+                        <p>May Primary School</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h4>Phone Number</h4>
+                        <p>+91 98765 43210</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <h4>Email Address</h4>
+                        <p>info@mayprimary.edu</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h4>Address</h4>
+                        <p>123 Education Lane, Knowledge City</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: CLASS DETAILS -->
+    <div id="classes" class="container" style="display: none;">
+        <h2 class="section-title">Student Population per Class</h2>
+        <p>Here is the breakdown of the number of students currently enrolled in each grade:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>🎒 Grade Level</th>
+                    <th>👥 Number of Students</th>
+                    <th>📌 Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Class 1</strong></td>
+                    <td>10</td>
+                    <td>🟢 Open</td>
+                </tr>
+                <tr>
+                    <td><strong>Class 2</strong></td>
+                    <td>27</td>
+                    <td>🟢 Open</td>
+                </tr>
+                <tr>
+                    <td><strong>Class
